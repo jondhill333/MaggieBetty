@@ -8,6 +8,7 @@ import Typography from "../styles/Typography";
 const ContentStyles = styled.div`
   width: 90%;
   margin: 0 auto;
+  font-family: "GlacialIndifference";
 `;
 
 export default function Layout({ children }) {
