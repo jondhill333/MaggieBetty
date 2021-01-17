@@ -1,6 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: "maggieBetty",
+    title: "Maggie Betty",
+    siteUrl: "https://maggiebetty.co.uk",
+    description: "Handmade in Sussex",
+    instagram: "@https://www.instagram.com/maggiebettyhomestudio/",
   },
   plugins: [
     "gatsby-plugin-styled-components",
