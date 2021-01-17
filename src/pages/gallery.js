@@ -1,14 +1,14 @@
 import * as React from "react";
 import styled from "styled-components";
 import PictureDisplay from "../components/picturesDisplay";
+import SEO from "../components/SEO";
 
 const GalleryPageStyles = styled.div``;
 
 export default function GalleryPage({ data }) {
-  // const { productPictures } = data.pictures.nodes;
-  // console.log(data.pictures.nodes);
   return (
     <>
+      <SEO title="Gallery" />
       <GalleryPageStyles>
         <PictureDisplay pictures={data.pictures.nodes} />
       </GalleryPageStyles>
