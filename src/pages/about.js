@@ -30,6 +30,38 @@ const AboutPageStyles = styled.div`
     text-align: justify;
     padding: 0 4% 0 0;
   }
+  @media (max-width: 1000px) {
+    .profilePicture {
+      width: 350px;
+      height: 350px;
+    }
+    .about {
+      font-size: 1.7rem;
+      padding: 0 2% 0 0;
+    }
+  }
+  @media (max-width: 750px) {
+    flex-direction: column;
+    padding: 4% 0;
+    height: 100%;
+    .profilePictureContainer {
+      width: 100%;
+    }
+    .profilePicture {
+      width: 300px;
+      height: 300px;
+    }
+    .about {
+      padding: 3% 0;
+      width: 95%;
+    }
+  }
+  @media (max-width: 400px) {
+    .profilePicture {
+      width: 250px;
+      height: 250px;
+    }
+  }
 `;
 
 export default function AboutPage({ data }) {
