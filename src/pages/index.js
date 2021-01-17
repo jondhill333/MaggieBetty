@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import Img from "gatsby-image";
+import SEO from "../components/SEO";
 
 const HomePageStyles = styled.div`
   width: 100%;
@@ -17,22 +18,24 @@ const HomePageStyles = styled.div`
 `;
 
 export default function HomePage({ data }) {
+  const logo = data.logos.nodes.filter(
+    (logo) => logo.name === "original size logo"
+  );
+  const fluid = logo[0].image.asset.fluid;
+
   return (
     <>
-      {/* <SEO title="Home" /> */}
+      <SEO title="Home" />
       <HomePageStyles>
-        <Img
-          fluid={data.logo.nodes[0].image.asset.fluid}
-          alt={data.logo.nodes.name}
-          className="image"
-        />
+        {}
+        <Img fluid={fluid} alt={logo.name} className="image" />
       </HomePageStyles>
     </>
   );
 }
 export const query = graphql`
   query logoQuery {
-    logo: allSanityLogoImages {
+    logos: allSanityLogoImages {
       nodes {
         image {
           asset {
