@@ -1,13 +1,26 @@
 import * as React from "react";
 import styled from "styled-components";
+import SEO from "../components/SEO";
+import Img from "gatsby-image";
 
 const AboutPageStyles = styled.div`
   width: 100%;
   height: 90vh;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
   .profilePictureContainer {
     width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profilePicture {
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
   }
 
   .about {
@@ -15,16 +28,26 @@ const AboutPageStyles = styled.div`
     width: 50%;
     font-size: 2rem;
     text-align: justify;
-    padding: 8% 4% 0 0;
+    padding: 0 4% 0 0;
   }
 `;
 
-export default function AboutPage() {
+export default function AboutPage({ data }) {
+  const profilePic = data.logos.nodes.filter(
+    (pic) => pic.name === "Profile Picture Two"
+  );
+  const profilePicFluid = profilePic[0].image.asset.fluid;
   return (
     <>
-      {/* <SEO title="Home" /> */}
+      <SEO title="About" />
       <AboutPageStyles>
-        <section className="profilePictureContainer"></section>
+        <section className="profilePictureContainer">
+          <Img
+            fluid={profilePicFluid}
+            alt={profilePic.name}
+            className="profilePicture"
+          />
+        </section>
         <section className="about">
           <p>
             I’m Maggie and I’m the creator behind the colourful makings at
@@ -53,3 +76,23 @@ export default function AboutPage() {
     </>
   );
 }
+
+export const query = graphql`
+  query profilePictureQuery {
+    logos: allSanityLogoImages {
+      nodes {
+        image {
+          asset {
+            fluid(maxHeight: 700) {
+              ...GatsbySanityImageFluid
+            }
+            fixed(width: 325, height: 220) {
+              ...GatsbySanityImageFixed
+            }
+          }
+        }
+        name
+      }
+    }
+  }
+`;
