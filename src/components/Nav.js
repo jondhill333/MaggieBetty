@@ -11,7 +11,7 @@ const NavStyles = styled.div`
   display: grid;
   grid-template-columns: 20% 60% 20%;
   border-bottom: 2px solid var(--maisieBrown);
-  align-items: flex-end;
+  align-items: center;
   .logo {
     font-size: 2.5rem;
     padding: 0 0 0 10px;
@@ -77,14 +77,14 @@ export default function Nav() {
     <NavStyles>
       <div className="logo">
         <Link to="/">
-          {" "}
+          {/* {" "}
           <div className="dogContainer">
             <Img
               fixed={logo.nodes[2].image.asset.fixed}
               alt={logo.nodes[2].name}
               className="image"
             />
-          </div>
+          </div> */}
           Maggie Betty
         </Link>
       </div>
