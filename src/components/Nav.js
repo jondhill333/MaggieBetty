@@ -50,12 +50,28 @@ const NavStyles = styled.div`
   .shopLink {
     pointer-events: none;
   }
+  .socialLinksContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    padding: 0 10px 0 0;
+  }
+  .instagram {
+    width: 35px;
+    height: 35px;
+    transform: translateY(4px);
+  }
+  .email {
+    width: 40px;
+    height: 40px;
+    transform: translateY(1px);
+  }
 `;
 
 export default function Nav() {
-  const { logo } = useStaticQuery(graphql`
+  const { logos } = useStaticQuery(graphql`
     query {
-      logo: allSanityLogoImages {
+      logos: allSanityLogoImages {
         nodes {
           image {
             asset {
@@ -72,6 +88,12 @@ export default function Nav() {
       }
     }
   `);
+
+  const instagramLogo = logos.nodes.filter((logo) => logo.name === "instagram");
+  const instagramFluid = instagramLogo[0].image.asset.fluid;
+
+  const emailLogo = logos.nodes.filter((logo) => logo.name === "email");
+  const emailFluid = emailLogo[0].image.asset.fluid;
 
   return (
     <NavStyles>
@@ -92,11 +114,34 @@ export default function Nav() {
         <Link to="/gallery">Gallery</Link>
         <Link to="/about">About</Link>
         <Link to="/contact">Contact</Link>
-        <a to="/" class="shopLink">
+        <a to="/" className="shopLink">
           Shop
         </a>
       </nav>
-      <div className="socialLinks">Space for Social Links</div>
+      <div className="socialLinksContainer">
+        <div className="socialLink instagram">
+          <a
+            href="https://www.instagram.com/maggiebettyhomestudio/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Img
+              fluid={instagramFluid}
+              alt={logos.nodes[2].name}
+              // className="instagram"
+            />
+          </a>
+        </div>
+        <div className="socialLink email">
+          <a href="mailto:maggie@maggiebetty.co.uk">
+            <Img
+              fluid={emailFluid}
+              alt={emailLogo.name}
+              // className="email"
+            />
+          </a>
+        </div>
+      </div>
     </NavStyles>
   );
 }
