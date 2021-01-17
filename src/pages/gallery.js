@@ -3,7 +3,10 @@ import styled from "styled-components";
 import PictureDisplay from "../components/picturesDisplay";
 import SEO from "../components/SEO";
 
-const GalleryPageStyles = styled.div``;
+const GalleryPageStyles = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
 export default function GalleryPage({ data }) {
   return (

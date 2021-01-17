@@ -9,6 +9,9 @@ const ContentStyles = styled.div`
   width: 90%;
   margin: 0 auto;
   font-family: "GlacialIndifference";
+  @media (max-width: 1000px) {
+    width: 95%;
+  }
 `;
 
 export default function Layout({ children }) {
