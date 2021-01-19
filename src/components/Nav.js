@@ -50,6 +50,11 @@ const NavStyles = styled.div`
   .shopLink {
     pointer-events: none;
   }
+  .message {
+    font-size: 1.3rem;
+    display: none;
+  }
+
   .socialLinksContainer {
     display: flex;
     flex-direction: row;
@@ -69,20 +74,20 @@ const NavStyles = styled.div`
   @media (max-width: 750px) {
     .logo {
       font-size: 2rem;
-  }
-  .pageLinks {
+    }
+    .pageLinks {
       font-size: 1.5rem;
     }
     .instagram {
-    width: 32px;
-    height: 32px;
-    transform: translateY(4px);
-  }
-  .email {
-    width: 36px;
-    height: 36px;
-    transform: translateY(1px);
-  }
+      width: 32px;
+      height: 32px;
+      transform: translateY(4px);
+    }
+    .email {
+      width: 36px;
+      height: 36px;
+      transform: translateY(1px);
+    }
   }
   @media (max-width: 500px) {
     grid-template-columns: 50% 50%;
@@ -99,11 +104,12 @@ const NavStyles = styled.div`
       grid-column: 1 / -1;
       font-size: 1.5rem;
       justify-content: space-between;
-      padding: 0 10px; 
+      padding: 0 10px;
     }
     .socialLinksContainer {
       grid-column: 2;
       padding: 0 10px 0 0;
+    }
   }
 `;
 
@@ -145,6 +151,7 @@ export default function Nav() {
         <Link to="/contact">Contact</Link>
         <a to="/" className="shopLink">
           Shop
+          <span className="message"> - coming soon</span>
         </a>
       </nav>
       <div className="socialLinksContainer">
@@ -156,7 +163,7 @@ export default function Nav() {
           >
             <Img
               fluid={instagramFluid}
-              alt={logos.nodes[2].name}
+              alt={instagramLogo.name}
               // className="instagram"
             />
           </a>
